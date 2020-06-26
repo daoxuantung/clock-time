@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./styles.css">
+    <title>Clock</title>
+</head>
+<body>
+    <div class="clock">
+        <div class="clock-hour" id="hr">
+            <div class="hh"></div>
+        </div>
+        <div class="clock-minute" id="mn">
+            <div class="mm"></div>
+        </div>
+        <div class="clock-second" id="sc">
+            <div class="ss"></div>
+        </div>
+    </div>
+    <script>
+        const hr = document.getElementById('hr');
+        const mn = document.getElementById('mn');
+        const sc = document.getElementById('sc');
+
+        setInterval(function() {
+            let day = new Date();
+            let hh = day.getHours() % 12 || 12;
+            let mm = day.getMinutes();
+            var ss = day.getSeconds(); 
+
+
+            hr.style.transform = `rotateZ(${-(180 - (30 * hh + mm/2) )}deg)`;
+            mn.style.transform = `rotateZ(${-(180 - 6 * mm)}deg)`;
+            sc.style.transform = `rotateZ(${-(180 - 6 * ss)}deg)`;
+
+            console.log(hr.style.transform);
+
+        }, 1000)
+    </script>
+</body>
+</html>
